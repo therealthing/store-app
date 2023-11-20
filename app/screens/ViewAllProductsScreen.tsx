@@ -1,48 +1,44 @@
 import { useNavigation } from '@react-navigation/native';
 import * as React from 'react';
 import {FlatList, SafeAreaView, Text, View} from 'react-native';
-import useProducts from '../useProducts';
+import useProducts from '../useAllProducts';
 import { ProductItem, ProductItemType } from '../components/ProductItem';
 import styled from 'styled-components/native';
 
 type ProductItem = {
   item: ProductItemType
 }
-const ListScreen: React.FC = function() {
+const ViewAllProductsScreen: React.FC = function() {
     const navigation = useNavigation();
 
     const renderItem = ({item}: ProductItem) => (
-      <ProductItem {...item} onPress={() => navigation.navigate('SingleProduct', {id: item.id})}/>
+      <ProductItem {...item} onPress={() => navigation.navigate("SingleProduct", {id: item.id})}/>
     )
 
-    const { data, isLoading, isSuccess }  = useProducts();
+    const { data, isLoading, isSuccess, isError, error }  = useProducts();
+
+    if(error) {
+      console.error(error);
+    }
+    
     return (
       <SafeAreaView>
-        <Text>All products</Text>
-        <Container>
         {isLoading && (<View><Text>Loading</Text></View>)}
+        {isError && (<View><Text>Error loading product..</Text></View>)}
+        <Container>
         {isSuccess && (
           <FlatList 
             data={data}
             renderItem={renderItem}
-          />
-        )}
+          />)}
         </Container>
       </SafeAreaView>
     )
   };
 
  const Container = styled.View`
-  display: flex;
-  flex-direction: row;
-  background-color: white;
+  background-color: lightgray;
+  padding: 4px;
  `;
 
-export const Cell = styled.View`
-  flex: 1 0 300px;
-  padding: 10px;
-  background-color: rgba(134, 19, 19, 0.3);
-  margin-bottom: 20px;
-`;
-
-  export default ListScreen;
+  export default ViewAllProductsScreen;

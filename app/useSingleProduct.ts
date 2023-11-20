@@ -3,9 +3,8 @@ import { LIST_ENDPOINT, requestOptions } from './constants';
 import type { ProductItemType } from './components/ProductItem';
 
 const fetchProduct = async (product: number) => {
-   
-    const { brand, category, description, images, id }: ProductItemType = await fetch(`${LIST_ENDPOINT}/${product}`, requestOptions).then(data => data.json());
-    return { brand, category, description, images, id};
+    const { price, brand, category, description, images, id, title }: ProductItemType = await fetch(`${LIST_ENDPOINT}/${product}`, requestOptions).then(data => data.json());
+    return { price, brand, category, description, images, id, title};
 };
 
 const useProduct = (productId: number) => 

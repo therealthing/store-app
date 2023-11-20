@@ -6,6 +6,6 @@ const fetchProducts = async () => {
     return products;
 };
 
-const useProducts = () => useQuery({ queryKey: ['products'], queryFn: fetchProducts });
+const useAllProducts = () => useQuery({ queryKey: ['products'], queryFn: fetchProducts, networkMode: 'offlineFirst'});
 
-export default useProducts;
+export default useAllProducts;
