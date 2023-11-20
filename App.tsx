@@ -1,50 +1,22 @@
 
 import React from 'react';
-import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-import {
-  Dimensions,
-  Text,
-  SafeAreaView,
-  View,
-} from 'react-native';
-
+import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
+import HomeScreen from './app/screens/HomeScreen';
+import AccountScreen from './app/screens/AccountScreen';
+import SearchScreen from './app/screens/SearchScreen';
 
 
-function HomeScreen(): JSX.Element {
-  return (
-    <SafeAreaView>
-      <Text>Home</Text>
-    </SafeAreaView>
-  )
-};
-
-function SearchScreen(): JSX.Element {
-  return (
-    <SafeAreaView>
-      <Text>Search</Text>
-    </SafeAreaView>
-  )
-};
-
-function AccountScreen(): JSX.Element {
-    return (
-      <SafeAreaView>
-        <Text>Account</Text>
-      </SafeAreaView>
-    )
-};
-
-const Tab = createMaterialTopTabNavigator();
+const Tab = createMaterialBottomTabNavigator();
 
 function App(): JSX.Element {
-  const screenWidth = Dimensions.get('window').width;
+
   return (
       <NavigationContainer>
-        <Tab.Navigator initialRouteName='Home' initialLayout={{width: screenWidth}} tabBarPosition='bottom'>
+        <Tab.Navigator initialRouteName='Home'>
           <Tab.Screen name="Home" component={HomeScreen} />
-          <Tab.Screen name="Search" component={SearchScreen} />
-          <Tab.Screen name="Account" component={AccountScreen} />
+          <Tab.Screen name="Search" component={SearchScreen}/>
+          <Tab.Screen name="Account" component={AccountScreen}/>
         </Tab.Navigator>
       </NavigationContainer>
   );
