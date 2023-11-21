@@ -1,7 +1,7 @@
 import { useRoute } from '@react-navigation/native';
 import * as React from 'react';
 import { SafeAreaView, Text, View} from 'react-native';
-import useSingleProduct from '../useSingleProduct';
+import useSingleProduct from '../hooks/useSingleProduct';
 import styled from 'styled-components/native';
 import { ProductItem } from '../components/ProductItem';
 

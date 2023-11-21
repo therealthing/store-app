@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import { LIST_ENDPOINT, requestOptions } from './constants';
+import { LIST_ENDPOINT, requestOptions } from '../constants';
 
 const fetchProducts = async (page:number) => {
     const limit = 10;

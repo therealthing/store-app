@@ -2,9 +2,9 @@ import { useNavigation } from '@react-navigation/native';
 import * as React from 'react';
 import { useState } from 'react';
 import {Alert, Button, FlatList, SafeAreaView, Text, View} from 'react-native';
-import useProducts from '../useAllProducts';
+import useProducts from '../hooks/useAllProducts';
 import { ProductItem, ProductItemType } from '../components/ProductItem';
-import styled from 'styled-components/native';
+import { PageContainer,PageController, ProductListContainer, PageControlsContainer } from '../components/styles';
 
 type ProductItem = {
   item: ProductItemType
@@ -16,7 +16,7 @@ const ViewAllProductsScreen: React.FC = function() {
       <ProductItem {...item} onPress={() => navigation.navigate("SingleProduct", {id: item.id})}/>
     )
     const [page,setPage] = useState<number>(0);
-    const { data, isLoading, isSuccess, isError, error, isFetching }  = useProducts(page);
+    const { data, isLoading, isSuccess, isError, error }  = useProducts(page);
     
 
     if(error) {
@@ -45,30 +45,5 @@ const ViewAllProductsScreen: React.FC = function() {
       </SafeAreaView>
     )
   };
-const ProductListContainer = styled.View`
-  flex-basis:100%;
-`;
-
-const PageControlsContainer = styled.View`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  flex-basis: 40px;
-  line-height: 40px;
-`;
-
-const PageController = styled.Button`
-  display: flex; 
-  font-size: 12px;
-  padding: 0 4px 0 4px;
-  color: darkgray;
-`;
-
- const PageContainer = styled.View`
-  background-color: lightgray;
-  display: flex;
-  flex-direction: column;
-  padding: 4px;
- `;
 
   export default ViewAllProductsScreen;
