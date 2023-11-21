@@ -36,3 +36,8 @@ export const SearchBarContainer = styled.TextInput`
   justify-content: space-around;
   background-color: white;
 `;
+
+export const FormTitle = styled.Text`
+  align-self: center;
+  font-size: 24px;
+`
