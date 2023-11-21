@@ -37,7 +37,29 @@ export const SearchBarContainer = styled.TextInput`
   background-color: white;
 `;
 
+export const FormContainer = styled.View`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
+
+export const FormSubmitButton = styled.Button`
+  margin: 10px 10px 0px 0px;
+`;
+
 export const FormTitle = styled.Text`
   align-self: center;
   font-size: 24px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+`;
+
+export const FieldContainer = styled.View`
+  flex: 1 0 10%;
+  width: 300px;
+`;
+
+export const LogoutContainer = styled.View`
+  flex: 1 0 10%;
+  margin-top: 20px;
 `

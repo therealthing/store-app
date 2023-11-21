@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import {FlatList, SafeAreaView, Text} from 'react-native';
 import useSearchProducts from '../hooks/useSearchProducts';
 import debounce from 'lodash/debounce';
@@ -11,14 +11,14 @@ type ProductItem = {
   item: ProductItemType
 }
 
-const SearchScreen: React.FC = function() {
+export const SearchScreen: React.FC = function() {
     const [keyword, setKeyword] = useState('');
     const { data, isLoading, isSuccess, isError, error }  = useSearchProducts(keyword);
     const navigation = useNavigation();
 
-    const renderItem = ({item}: ProductItem) => (
+    const renderItem = useCallback(({item}: ProductItem) => (
       <ProductItem {...item} onPress={() => navigation.navigate("SingleProduct", {id: item.id})}/>
-    )
+    ),[navigation]);
 
     const debouncedOnTyping = debounce(setKeyword, 500);
 
@@ -49,6 +49,3 @@ const SearchScreen: React.FC = function() {
       </SafeAreaView>
     )
 };
-
-export default SearchScreen;
-

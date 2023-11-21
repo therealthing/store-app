@@ -5,9 +5,9 @@ import useSingleProduct from '../hooks/useSingleProduct';
 import styled from 'styled-components/native';
 import { ProductItem } from '../components/ProductItem';
 
-const SingleProductScreen: React.FC = function() {
+export const SingleProductScreen: React.FC = function() {
     const route = useRoute();
-    const {id } = route?.params;
+    const { id } = route?.params;
     const { data: product, isLoading, isSuccess, isError }  = useSingleProduct(id);
     
     return (
@@ -18,14 +18,14 @@ const SingleProductScreen: React.FC = function() {
         {isSuccess && (
             <Cell>
                 <ProductItem 
-                id={id}
-                viewMode="single"
-                category={product.category}
-                brand={product.brand}
-                price={product.price}
-                title={product.title}
-                description={product.description}
-                images={product.images}
+                  id={id}
+                  viewMode="single"
+                  category={product.category}
+                  brand={product.brand}
+                  price={product.price}
+                  title={product.title}
+                  description={product.description}
+                  images={product.images}
                 />
             </Cell>
         )}

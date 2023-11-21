@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/native';
 import * as React from 'react';
-import { useState } from 'react';
+import { useState, useCallback} from 'react';
 import {Alert, Button, FlatList, SafeAreaView, Text, View} from 'react-native';
 import useProducts from '../hooks/useAllProducts';
 import { ProductItem, ProductItemType } from '../components/ProductItem';
@@ -9,12 +9,13 @@ import { PageContainer,PageController, ProductListContainer, PageControlsContain
 type ProductItem = {
   item: ProductItemType
 }
-const ViewAllProductsScreen: React.FC = function() {
+export const ViewAllProductsScreen: React.FC = function() {
     const navigation = useNavigation();
-
-    const renderItem = ({item}: ProductItem) => (
+    
+    const renderItem = useCallback(({item}: ProductItem) => (
       <ProductItem {...item} onPress={() => navigation.navigate("SingleProduct", {id: item.id})}/>
-    )
+    ),[navigation]);
+
     const [page,setPage] = useState<number>(0);
     const { data, isLoading, isSuccess, isError, error }  = useProducts(page);
     
@@ -45,5 +46,3 @@ const ViewAllProductsScreen: React.FC = function() {
       </SafeAreaView>
     )
   };
-
-  export default ViewAllProductsScreen;
