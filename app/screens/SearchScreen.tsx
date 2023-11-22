@@ -20,6 +20,8 @@ export const SearchScreen: React.FC = function() {
       <ProductItem {...item} onPress={() => navigation.navigate("SingleProduct", {id: item.id})}/>
     ),[navigation]);
 
+    const keyExtractor = (item: ProductItemType) => item.id.toString();
+
     const debouncedOnTyping = debounce(setKeyword, 500);
 
     if(error) {
@@ -43,6 +45,10 @@ export const SearchScreen: React.FC = function() {
                 {isError ?? <Text>loading error</Text>}
                 {isSuccess && data?.length ? <FlatList
                     data={data}
+                    keyExtractor={keyExtractor}
+                    maxToRenderPerBatch={6}
+                    removeClippedSubviews={true}
+                    windowSize={3}
                     renderItem={renderItem} />: <Text>No results for "{keyword}"</Text>}
               </ProductListContainer>
         </PageContainer>

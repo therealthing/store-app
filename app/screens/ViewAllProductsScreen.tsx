@@ -16,6 +16,8 @@ export const ViewAllProductsScreen: React.FC = function() {
       <ProductItem {...item} onPress={() => navigation.navigate("SingleProduct", {id: item.id})}/>
     ),[navigation]);
 
+    const keyExtractor = (item: ProductItemType) => item.id.toString();
+
     const [page,setPage] = useState<number>(0);
     const { data, isLoading, isSuccess, isError, error }  = useProducts(page);
     
@@ -38,6 +40,10 @@ export const ViewAllProductsScreen: React.FC = function() {
               <ProductListContainer>
                 <FlatList
                     data={data}
+                    maxToRenderPerBatch={6}
+                    removeClippedSubviews={true}
+                    windowSize={3}
+                    keyExtractor={keyExtractor}
                     renderItem={renderItem} />
               </ProductListContainer>
               </>

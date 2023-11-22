@@ -28,7 +28,6 @@ export const PageController = styled.Button`
 
 export const SearchBarContainer = styled.TextInput`
   margin: 20px 10px 20px 10px;
-  line-height: 24px;
   padding-left: 10px;
   padding-bottom: 4px;
   padding-top: 4px;

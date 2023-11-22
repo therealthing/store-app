@@ -13,7 +13,7 @@ export type ProductItemType = {
     brand?: string;
     thumbnail?: string;
     category?: string;
-    price?: number;
+    price?: string;
     images?: ProductImage[];
     viewMode: 'list' | 'single',
     onPress?: () => void;
