@@ -1,6 +1,20 @@
 This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
 
-# Screenshots
+# Intro
+
+This sample store app covers:
+ - nested navigation using React Navigation (TabNavigator + StackNavigator)
+ - styled components
+ - React Query with pagination
+ - product listing using FlatList
+ - user authentication (the working credentials are pre-populated). The token retrieved is displayed in the console.
+ - product search (quering the backend)
+ - single product view (dedicated route with parameters)
+ - add new product form
+ - image caching using React Native Fast Image
+
+
+# Screenshots 
 
 ![Image Alt text](/readme-media/preventing-previous-page.png "Product list paginated"))
 
@@ -54,12 +68,7 @@ This is one way to run your app — you can also run it directly from within And
 
 ## Congratulations! :tada:
 
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
+You're successfully running Store App built with React Native. :partying_face:
 
 # Troubleshooting
 
