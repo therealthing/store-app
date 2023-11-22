@@ -3,10 +3,10 @@ import { Text, TextInput, Button } from 'react-native';
 import { FormTitle, FieldContainer, FormContainer } from '../components/styles';
 
 export type LoginFormProps = {
-    authenticateUser: (user:string, pass:string) => void;
+    onSubmit: (data) => void;
 };
 
-export const LoginForm = ({authenticateUser}: LoginFormProps) => {
+export const LoginForm = ({onSubmit}: LoginFormProps) => {
     const [newUser, setNewUser] = useState('kminchelle');
     const [newPass, setNewPass] = useState('0lelplR');
 
@@ -15,12 +15,12 @@ export const LoginForm = ({authenticateUser}: LoginFormProps) => {
       <FormTitle>Authentication</FormTitle>
       <FieldContainer>
         <Text>Username:</Text>
-        <TextInput placeholder="kminchelle" style={{backgroundColor: 'white'}} onChangeText={text => setNewUser(text)} value={newUser} />
+        <TextInput placeholder="kminchelle" style={{backgroundColor: 'white'}} onChangeText={setNewUser} value={newUser} />
       </FieldContainer>
       <FieldContainer>
         <Text>Password:</Text>
-        <TextInput placeholder='0lelplR' secureTextEntry style={{backgroundColor: 'white'}} onChangeText={text => setNewPass(text)} value={newPass}/>
-        <Button title='Log in' onPress={() => authenticateUser(newUser, newPass)}/>
+        <TextInput placeholder='0lelplR' secureTextEntry style={{backgroundColor: 'white'}} onChangeText={setNewPass} value={newPass}/>
+        <Button title='Log in' onPress={() => onSubmit({username: newUser, password: newPass})} />
       </FieldContainer>  
     </FormContainer>);
   };
